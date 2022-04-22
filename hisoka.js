@@ -1242,7 +1242,7 @@ break
 		await hisoka.updateBlockStatus(users, 'unblock').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
 	}
 	break
-case 'autosimih': {
+case 'autosimih':
 if (!isCreator) throw mess.owner
 if (args[0] === 'on'){
 if (db.data.settings[botNumber].simih) return m.reply(`Sudah aktif sebelumnya`)
