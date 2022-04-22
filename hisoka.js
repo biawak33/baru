@@ -120,6 +120,15 @@ const ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid"
                 antitiktok: false,
                 expired: 0,
         }
+let setting = global.db.data.settings[botNumber]
+            if (typeof setting !== 'object') global.db.data.settings[botNumber] = {}
+	    if (setting) {
+		if (!isNumber(setting.status)) setting.status = 0
+		if (!('autobio' in setting)) setting.autobio = false
+	    } else global.db.data.settings[botNumber] = {
+		status: 0,
+		simih: true,
+	    }
         } catch (err) {
             console.error(err)
         }
@@ -164,7 +173,12 @@ const ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid"
 	    await sleep(500)
 	    m.copyNForward(m.chat, true, { readViewOnce: true }).catch(_ => m.reply('Mungkin dah pernah dibuka bot'))
 	}
-	
+	// Simih-Simih
+if(!m.key.fromMe && !isMedia && !m.isGroup && db.data.settings[botNumber].simih) {
+simih = await fetchJson(`https://api.simsimi.net/v2/?text=${encodeURIComponent(command)}&lc=id`)
+samih = `${simih.success}`
+m.reply(samih)
+}
 	if (budy.includes('6281276698054')) {  
 hisoka.sendMessage(m.chat, {text: 'Ada Apa Ya Ngetag Owner Ku?'}, {quoted: m})
 	  }	     
@@ -1228,6 +1242,22 @@ break
 		await hisoka.updateBlockStatus(users, 'unblock').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
 	}
 	break
+case 'autosimih': {
+if (!isCreator) throw mess.owner
+if (args[0] === 'on'){
+if (db.data.settings[botNumber].simih) return m.reply(`Sudah aktif sebelumnya`)
+db.data.settings[botNumber].simih = true
+reply(`Berhasil mengaktifkan simih`)
+} else if (args[0] === 'off'){
+if (!db.data.settings[botNumber].simih) return m.reply(`Sudah tidak aktif sebelumnya`)
+db.data.settings[botNumber].simih = false
+m.reply(`Berhasil menonaktifkan simih`)
+} else {
+m.reply(`Mode Auto Simi
+Aktif: ${prefix + command} on
+Nonaktid: ${prefix + command} off`)
+}
+break
 	    case 'setname': case 'setsubject': {
                 if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
