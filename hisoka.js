@@ -123,10 +123,8 @@ const ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid"
 let setting = global.db.data.settings[botNumber]
             if (typeof setting !== 'object') global.db.data.settings[botNumber] = {}
 	    if (setting) {
-		if (!isNumber(setting.status)) setting.status = 0
-		if (!('autobio' in setting)) setting.autobio = false
+		if (!('simih' in settings)) settings.simih = true
 	    } else global.db.data.settings[botNumber] = {
-		status: 0,
 		simih: true,
 	    }
         } catch (err) {
