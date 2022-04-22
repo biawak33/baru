@@ -120,13 +120,6 @@ const ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid"
                 antitiktok: false,
                 expired: 0,
         }
-let setting = global.db.data.settings[botNumber]
-            if (typeof setting !== 'object') global.db.data.settings[botNumber] = {}
-	    if (setting) {
-		if (!('simih' in settings)) settings.simih = true
-	    } else global.db.data.settings[botNumber] = {
-		simih: true,
-	    }
         } catch (err) {
             console.error(err)
         }
