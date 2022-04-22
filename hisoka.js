@@ -78,10 +78,7 @@ module.exports = hisoka = async (hisoka, m, chatUpdate, store) => {
     	const isAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
 	    const isPremium = isCreator || global.premium.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || false
 
-        // Memeg
-        let picaks = [flaming,fluming,flarun,flasmurf]
-		let picak = picaks[Math.floor(Math.random() * picaks.length)]
-
+        
 const wib = moment.tz('Asia/Jakarta').format('HH : mm : ss')
 const wita = moment.tz('Asia/Makassar').format('HH : mm : ss')
 const wit = moment.tz('Asia/Jayapura').format('HH : mm : ss')
