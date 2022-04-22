@@ -164,12 +164,7 @@ const ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid"
 	    await sleep(500)
 	    m.copyNForward(m.chat, true, { readViewOnce: true }).catch(_ => m.reply('Mungkin dah pernah dibuka bot'))
 	}
-	// Simih-Simih
-if(!m.key.fromMe && !isMedia && !m.isGroup && db.data.settings[botNumber].simih) {
-simih = await fetchJson(`https://api.simsimi.net/v2/?text=${encodeURIComponent(command)}&lc=id`)
-samih = `${simih.success}`
-m.reply(samih)
-}
+	
 	if (budy.includes('6281276698054')) {  
 hisoka.sendMessage(m.chat, {text: 'Ada Apa Ya Ngetag Owner Ku?'}, {quoted: m})
 	  }	     
